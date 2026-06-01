@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    background: black;
+    color: #ffffff;
+    font-family: 'Fira Code', monospace;
+    display: flex;
+    justify-content: center; /* تمركز أفقي */
+    align-items: center;     /* تمركز عمودي */
+    height: 100vh;
+    flex-direction: column;
+    padding: 0; /* إزالة الـpadding لأننا مركزين */
+  }
+
+  .terminal {
+    background: rgb(42, 42, 42);
+    border-radius: 10px;
+    padding: 40px 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    position: relative;
+    text-align: left;
+  }
+
+  .terminal::before {
+    content: "Love Terminal";
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    color: #ed9cffd6;
+    font-weight: bold;
+  }
+
+  .line {
+    margin: 15px 0;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: appear 1s forwards;
+  }
+
+  .line:nth-child(1){animation-delay: 0.5s;}
+  .line:nth-child(2){animation-delay: 1.5s;}
+  .line:nth-child(3){animation-delay: 2.5s;}
+
+  @keyframes appear {
+    to { opacity: 1; }
+  }
+
+  button {
+    margin-top: 25px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: 2px solid #ffffffed;
+    border-radius: 8px;
+    background: transparent;
+    color: #ffffffed;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  /* button:hover {
+    background: black;
+    color: #ffffff;
+    transform: scale(1.05);
+  } */
+  /* داخل <style> بعد كل شيء آخر */
+@media (max-width: 490px) { 
+  .terminal {
+    padding: 37px 37px;   /* أصغر بادينج */
+    width: 70%;
+    max-width: 300px;
+    word-wrap: break-word; /* مهم للنصوص الطويلة */
+  }
+
+  .line {
+    font-size: 0.95rem;   /* تصغير حجم الخط أكتر */
+    margin: 8px 0;
+  }
+
+  button {
+    padding: 8px 15px;  
+    font-size: 0.85rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="terminal">
+  <div class="line">Initializing Love Terminal</div>
+  <div class="line">Connecting to your heart</div>
+  <div class="line">Connection Established</div>
+  <button onclick="goToLovePage()"> View Secret Message</button>
+</div>
+
+
+
+<script>
+function goToLovePage() {
+  window.location.href = "index1.html"; // ضع هنا رابط الصفحة اللي عايز تروح لها
+}
+</script>
+
+</body>
+</html>
