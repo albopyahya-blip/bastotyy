@@ -1,113 +1,327 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  body {
-    margin: 0;
-    background: black;
-    color: #ffffff;
-    font-family: 'Fira Code', monospace;
-    display: flex;
-    justify-content: center; /* تمركز أفقي */
-    align-items: center;     /* تمركز عمودي */
-    height: 100vh;
-    flex-direction: column;
-    padding: 0; /* إزالة الـpadding لأننا مركزين */
-  }
+    <meta charset="UTF-8">
+    <meta name="author" content="yahya walid">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i love you</title>
+    <link rel="stylesheet" href="css/ym1.css">
 
-  .terminal {
-    background: rgb(42, 42, 42);
-    border-radius: 10px;
-    padding: 40px 30px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.7);
-    position: relative;
-    text-align: left;
-  }
-
-  .terminal::before {
-    content: "Love Terminal";
-    position: absolute;
-    top: 15px;
-    left: 25px;
-    color: #ed9cffd6;
-    font-weight: bold;
-  }
-
-  .line {
-    margin: 15px 0;
-    font-size: 1.2rem;
-    opacity: 0;
-    animation: appear 1s forwards;
-  }
-
-  .line:nth-child(1){animation-delay: 0.5s;}
-  .line:nth-child(2){animation-delay: 1.5s;}
-  .line:nth-child(3){animation-delay: 2.5s;}
-
-  @keyframes appear {
-    to { opacity: 1; }
-  }
-
-  button {
-    margin-top: 25px;
-    padding: 12px 25px;
-    font-size: 1rem;
-    border: 2px solid #ffffffed;
-    border-radius: 8px;
-    background: transparent;
-    color: #ffffffed;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  /* button:hover {
-    background: black;
-    color: #ffffff;
-    transform: scale(1.05);
-  } */
-  /* داخل <style> بعد كل شيء آخر */
-@media (max-width: 490px) { 
-  .terminal {
-    padding: 37px 37px;   /* أصغر بادينج */
-    width: 70%;
-    max-width: 300px;
-    word-wrap: break-word; /* مهم للنصوص الطويلة */
-  }
-
-  .line {
-    font-size: 0.95rem;   /* تصغير حجم الخط أكتر */
-    margin: 8px 0;
-  }
-
-  button {
-    padding: 8px 15px;  
-    font-size: 0.85rem;
-  }
-}
-</style>
 </head>
 <body>
-
-<div class="terminal">
-  <div class="line">Initializing Love Terminal</div>
-  <div class="line">Connecting to your heart</div>
-  <div class="line">Connection Established</div>
-  <button onclick="goToLovePage()"> View Secret Message</button>
+    
 </div>
+    
+    
+<style>
+/* Switch Container أصغر */
 
 
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-side);
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 1em;
+  width: 1em;
+  left: 0.4em;
+  bottom: 0.4em;
+  border-radius: 50%;
+  background: var(--btn-main);
+  transition: 0.4s;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--accent);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.4em);  /* تحريك أقل بسبب صغر الحجم */
+  box-shadow: inset 12px -3px 0px 12px #ffcf48;
+}
+
+/* النجوم */
+.star {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  width: 4px;   /* أصغر شوي */
+  height: 4px;  /* أصغر شوي */
+  transition: all 0.4s;
+}
+
+.star_1 { left: 2em; top: 0.4em; }
+.star_2 { left: 1.8em; top: 1em; }
+.star_3 { left: 2.4em; top: 0.7em; }
+
+.switch input:checked ~ .slider .star {
+  opacity: 0;
+}
+
+/* السحابة */
+.cloud {
+  width: 2.8em;   /* أصغر شوي */
+  position: absolute;
+  bottom: -1em;
+  left: -0.9em;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.switch input:checked ~ .slider .cloud {
+  opacity: 1;
+}
+</style>
 
 <script>
-function goToLovePage() {
-  window.location.href = "index1.html"; // ضع هنا رابط الصفحة اللي عايز تروح لها
-}
+const themeSwitch = document.getElementById('themeSwitch');
+const html = document.documentElement;
+
+// الوضع الحالي
+let darkMode = localStorage.getItem('theme') === 'light' ? false : true;
+themeSwitch.checked = !darkMode;
+html.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+
+themeSwitch.addEventListener('change', () => {
+  darkMode = !themeSwitch.checked;
+  html.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+});
 </script>
 
+    <div class="button">
+            
+            <button onclick="window.location.href='index1.html'">
+                i love you
+            </button>
+            <button onclick="window.location.href='index100.html'">
+                    Don't press here 
+            </button>
+    </div>
+
+    <style>
+        .button {
+    display: flex;
+    flex-direction: column; 
+    /* يخلّي العناصر فوق بعض */
+    align-items: center;   
+     /* يركّزهم أفقياً */
+    gap: 1rem;              
+    /* مسافة بين الزرارين */
+    margin-top: 20px;      
+     /* لو عايز مسافة من فوق */
+}
+/* ── تعريف الألوان (سهولة التعديل) ── */
+:root {
+  --bg-dark: #000000;      /* مثال: خلفية عامة داكنة جديدة */
+  --bg-side: #000000;      /* المنيو الجانبي */
+  --bg-light: #ffe0f0;     /* صفحات خاصة */
+  
+  --text-main: #eeeeee;    /* نصوص عامة */
+  --text-primary: #ed9cffd6; /* نصوص/عناوين رئيسية */
+  
+  --btn-main: #ed9cffd6;     /* زرار رئيسي */
+  --btn-hover: #ed9cff53;    /* hover */
+  
+  --accent: #70b5ff;       /* أيقونات */
+}
+
+
+
+/* ── باقي الكود يستخدم المتغيرات أعلاه ── */
+body {
+    background-color: var(--bg-dark);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.hamburger {
+    cursor: pointer;
+}
+
+.hamburger input {
+    display: none;
+}
+
+.hamburger svg {
+    height: 1.8em;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+    fill: none;
+    stroke: var(--text-main);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    transition: stroke-dasharray 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+    stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+    transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+.menu-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: var(--bg-side);
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: left 0.4s ease;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+}
+
+.side-menu a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.side-menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-5px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.close-menu {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 22px;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.close-menu:hover {
+    color: var(--btn-hover);
+    transform: rotate(90deg);
+}
+
+#menu-toggle {
+    display: none;
+}
+
+#menu-toggle:checked ~ .side-menu {
+    left: 0;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+button {
+    --main-color: var(--btn-main);
+    --main-bg-color: rgba(218, 105, 255, 0.36);
+    --pattern-color: rgba(255, 105, 180, 0.073);
+
+    filter: hue-rotate(0deg);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    background: radial-gradient(circle, var(--main-bg-color) 0%, rgba(0,0,0,0) 95%),
+                linear-gradient(var(--pattern-color) 1px, transparent 1px),
+                linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+    background-size: cover, 15px 15px, 15px 15px;
+    background-position: center center, center center, center center;
+    border-image: radial-gradient(circle, var(--main-color) 0%, rgba(0,0,0,0) 100%) 1;
+    border-width: 1px 0 1px 0;
+    color: var(--main-color);
+    padding: 0.8rem 2.5rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    transition: background-size 0.2s ease-in-out;
+}
+
+button:hover {
+    background-size: cover, 10px 10px, 10px 10px;
+    color: var(--accent);
+}
+
+button:active {
+    filter: hue-rotate(250deg);
+}
+
+@media screen and (max-width: 480px) {
+    .side-menu {
+        width: 200px;
+        padding-top: 60px;
+        gap: 12px;
+        border-radius: 0 10px 10px 0;
+    }
+
+    .side-menu a {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    button {
+        padding: 0.7rem 2rem;
+        font-size: 1.1rem;
+        letter-spacing: 0.3rem;
+    }
+
+    .hamburger svg {
+        height: 1.5em;
+    }
+
+    .close-menu {
+        font-size: 20px;
+        top: 12px;
+        left: 12px;
+    }
+}
+
+
+/* ....................................... */
+
+    </style>
+    
 </body>
 </html>
